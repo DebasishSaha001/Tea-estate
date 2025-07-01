@@ -291,3 +291,40 @@
       font-size: 20px;
       text-align: center;
     }
+
+    #checkout{
+      min-height: 61.5vh;
+      padding: 50px;
+      padding-left: 200px;
+      padding-right: 200px;
+    }
+
+    #checkout>.container{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+
+    #checkout input,textarea{
+      margin-bottom: 20px;
+      width: 300px;
+    }
+
+    #checkout button{
+      background-color: #2e7d32;
+    }
+    #checkout button:hover{
+      background-color:#14d31b;
+    }
+
+    #checkout img{
+      width: 200px;
+      height: auto;
+    }
+
+    #checkout p{
+      max-width:300px;
+      font-size: 20px;
+    }

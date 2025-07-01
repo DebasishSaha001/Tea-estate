@@ -37,6 +37,35 @@ app.get("/shop",(req,res)=>{
     res.render("product.ejs")
 });
 
+let qty=1;
+
+app.post("/buy",(req,res)=>{
+    qty=req.body.qty;
+    let st=599*qty;
+    let tax=Math.floor(0.18*st);
+    let tot=st+tax;
+    res.render("checkout.ejs",{
+        qty: qty,
+        st: st,
+        tax:tax,
+        tot:tot,
+    });
+});
+
+app.post("/checkout",async(req,res)=>{
+    const name=req.body.name;
+    const phn=req.body.phone;
+    const email=req.body.email;
+    const address=req.body.address;
+    const referNum=req.body.refernum;
+    try{
+        await db.query("INSERT INTO orders (name,phone_num,email,address,transaction) VALUES ($1,$2,$3,$4,$5)",[name,phn,email,address,referNum]);
+    } catch(err){
+        console.log(err)
+    }
+    res.redirect("/");
+});
+
 app.listen(port,(req,res)=>{
     console.log(`Server running on port: ${port}`);
 });

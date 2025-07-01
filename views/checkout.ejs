@@ -1,0 +1,26 @@
+<%- include("header.ejs") %>
+<section id="checkout">
+    <div class="container">
+        <div>
+            <h1>Personal Information :</h1>
+            <form action="checkout" method="post">
+                <input type="text" name="name" placeholder="Your Name" required style="padding: 12px; border-radius: 5px; border: 1px solid #ccc;"><br>
+                <input type="tel" name="phone" placeholder="Mobile Number" required style="padding: 12px; border-radius: 5px; border: 1px solid #ccc;"><br>
+                <input type="email" name="email" placeholder="Your Email" required style="padding: 12px; border-radius: 5px; border: 1px solid #ccc;"><br>
+                <textarea type="text" name="address" placeholder="Address" required style="padding: 12px; border-radius: 5px; border: 1px solid #ccc;"></textarea><br>
+                <input type="text" name="refernum"  placeholder="Transaction ID of the Payment" required style="padding: 12px; border-radius: 5px; border: 1px solid #ccc;"><br>
+                <button type="submit" style=" color: white; padding: 12px; border: none; border-radius: 5px; font-size: 16px;">Submit</button>
+            </form>
+        </div>
+        <div>
+            <h1>Price Breakdown:</h1>
+            <p>Subtotal : <%=st%></p>
+            <p>Tax : <%=tax%></p>
+            <hr>
+            <p>Total : <%= tot %></p>
+            <img src="image/qr.jpeg">
+            <p>Pay the Total Amount in the above QR code and type the <strong>Transaction</strong> number on the required field.</p>
+        </div>
+    </div>
+</section>
+<%- include("footer.ejs") %>
