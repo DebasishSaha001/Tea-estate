@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Maijonga Tea Estate</title>
-  <link rel="stylesheet" href="main.css">
-</head>
-<body>
-
-  <header>
-    <a href="#" id="logo">Maijonga.in</a>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#hello">Gallery</a>
-      <a href="#About">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<%- include ("header.ejs") %>
 
   <div class="hero">
     <div class="overlay"></div>
@@ -22,8 +6,8 @@
       <h1>MAIJONGA TEA ESTATE</h1>
       <p>Welcome to the heart of Assam's finest tea garden.</p>
       <div class="buttons">
-        <a href="#book">Explore</a>
-        <a href="#About">Shop</a> 
+        <a href="#book">Visit</a>
+        <a href="/shop">Shop</a> 
       </div>
     </div>
   </div>
@@ -120,9 +104,5 @@
     <p><strong>Hours:</strong> Mon - Sat, 9:00 AM to 6:00 PM</p>
   </div>
 </section>
-<footer style="background-color: #2e7d32; color: white; text-align: center; padding: 20px;">
-  <p>&copy; Copy Right Maijonga Tea Estate. All rights reserved.</p>
-</footer>
 
-</body>
-</html>
+<%- include("footer.ejs") %>

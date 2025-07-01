@@ -33,6 +33,10 @@ app.post("/visit",async(req,res)=>{
     res.redirect("/");
 });
 
+app.get("/shop",(req,res)=>{
+    res.render("product.ejs")
+});
+
 app.listen(port,(req,res)=>{
     console.log(`Server running on port: ${port}`);
 });
