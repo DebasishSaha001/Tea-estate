@@ -1,20 +1,25 @@
 import express from "express";
 import bodyParser from "body-parser";
 import {Client} from "pg";
+import 'dotenv/config'
 
 const app= express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
-const port=3000;
-const db= new Client({
-    user:"postgres",
-    host:"localhost",
-    database:"Maijonga",
-    password:"password",
-    port:5432
-});
-db.connect();
+const port= process.env.PORT;
 
+const db= new Client({
+    connectionString: process.env.DB_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
+try{
+    db.connect();
+    console.log("connected.");
+}catch(err){
+    console.log("not connect.");
+}
 app.get("/",(req,res)=>{
     res.render("index.ejs");
 });
@@ -28,7 +33,7 @@ app.post("/visit",async(req,res)=>{
     try{
         await db.query("INSERT INTO visits (name,phone_num,email,date,messege) VALUES ($1,$2,$3,$4,$5)",[name,phn,email,date,msg]);
     } catch(err){
-        console.log(err)
+        console.log("First query error.");
     }
     res.redirect("/");
 });
@@ -61,7 +66,7 @@ app.post("/checkout",async(req,res)=>{
     try{
         await db.query("INSERT INTO orders (name,phone_num,email,address,transaction) VALUES ($1,$2,$3,$4,$5)",[name,phn,email,address,referNum]);
     } catch(err){
-        console.log(err)
+        console.log("Second query error.");
     }
     res.redirect("/");
 });
