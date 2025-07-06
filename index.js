@@ -64,7 +64,7 @@ app.post("/checkout",async(req,res)=>{
     const address=req.body.address;
     const referNum=req.body.refernum;
     try{
-        await db.query("INSERT INTO orders (name,phone_num,email,address,transaction) VALUES ($1,$2,$3,$4,$5)",[name,phn,email,address,referNum]);
+        await db.query("INSERT INTO orders (name,phone_num,email,address,transaction,quantity) VALUES ($1,$2,$3,$4,$5,$6)",[name,phn,email,address,referNum,qty]);
     } catch(err){
         console.log("Second query error.");
     }
